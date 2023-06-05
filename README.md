@@ -1,1 +1,2 @@
 # Library
+This project is a simple library App made with HTML/CSS and JavaScript. The user can add books to a library. Each book needs  a title, author, and a number of pages. And whether or not the user has read the book.
