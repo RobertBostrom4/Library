@@ -35,3 +35,31 @@ input {
     grid-template-rows: repeat(auto-fill, minmax(150px 1fr));
     gap: 20px;
 }
+
+.book {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border-radius: 4%;
+    background-color: #7289da;
+    width: 90%;
+    height: 50%;
+}
+
+h1 {
+    color: #424549;
+}
+
+.book button {
+    background-color: #424549;
+    border-radius: 4%;
+    width: 60%;
+    height: 15%;
+}
+
+p,
+h3,
+h4 {
+    font-size: 1rem;
+    color: #36393e;
+}
