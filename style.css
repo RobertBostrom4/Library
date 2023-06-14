@@ -13,3 +13,19 @@ body {
     flex-flow: column;
     align-items: center;
 }
+
+form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 15px;
+    background-color: #7289da;
+    border-radius: 4%;
+    width: 52%;
+}
+
+input {
+    background-color: #424549;
+    border-radius: 4%;
+}
+
