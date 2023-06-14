@@ -62,3 +62,33 @@ function displayBooks() {
     index++;
 
 }
+
+function addBookToLibrary(submitButton) {
+
+    let newBookButton = document.querySelector(".new-book");
+    let bookTitle = document.querySelector("[name=title]");
+    let bookAuthor = document.querySelector("[name=author]");
+    let numberOfPages = document.querySelector("[name=num-of-pages]");
+    let readStatus = document.querySelector("[name=read-status]");
+
+    submitButton.addEventListener("click", (event) => {
+
+        let newBook = new Book(bookTitle.value, bookAuthor.value, numberOfPages.value, readStatus.value);
+        let check = (book) => book.title == newBook.title;
+
+        if (!myLibrary.some(check)) {
+            myLibrary.push(newBook);
+            displayBooks();
+            bookTitle.value = "";
+
+
+            newBookButton.hidden = false;
+            document.querySelector(".header-section").children[2].remove();
+        }
+
+
+
+        event.preventDefault();
+    });
+
+}
