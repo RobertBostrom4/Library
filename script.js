@@ -34,6 +34,8 @@ function displayBooks() {
     let numberOfPages = document.createElement("p");
     let read = document.createElement("p");
     let removeFromLibrary = document.createElement("button");
+    let changeReadStatus = document.createElement("button");
+    changeReadStatus.textContent = "Change read status";
     selectedBook.id = index;
     removeFromLibrary.textContent = "Remove from Library";
 
@@ -43,6 +45,11 @@ function displayBooks() {
         books.removeChild(selectedBook);
         index--;
 
+    });
+
+    changeReadStatus.addEventListener("click", (event) => {
+
+        updateReadStatus(mostRecentBook, read);
     });
 
     title.textContent = mostRecentBook.title;
@@ -55,7 +62,7 @@ function displayBooks() {
     selectedBook.appendChild(numberOfPages);
     selectedBook.appendChild(read);
     selectedBook.appendChild(removeFromLibrary);
-
+    selectedBook.appendChild(changeReadStatus);
 
 
     books.appendChild(selectedBook);
@@ -79,9 +86,7 @@ function addBookToLibrary(submitButton) {
         if (!myLibrary.some(check)) {
             myLibrary.push(newBook);
             displayBooks();
-            bookTitle.value = "";
-
-
+        
             newBookButton.hidden = false;
             document.querySelector(".header-section").children[2].remove();
         }
@@ -179,6 +184,11 @@ function createForm() {
 
 
 
+}
+
+function updateReadStatus(book, domObject) {
+    book.read == "Yes" ? book.read = "No" : book.read = "Yes";
+    domObject.textContent = "Read Status: " + book.read;
 }
 
 
