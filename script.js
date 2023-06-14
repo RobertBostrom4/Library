@@ -92,3 +92,100 @@ function addBookToLibrary(submitButton) {
     });
 
 }
+
+function createForm() {
+
+    newBookButton = document.querySelector(".new-book");
+
+
+
+    newBookButton.addEventListener("click", (event) => {
+
+        let headerSection = document.querySelector(".header-section");
+        let bookForm = document.createElement("form");
+
+
+        let titleGroup = document.createElement("div");
+        let titleLabel = document.createElement("label");
+        let titleInput = document.createElement("input");
+        titleLabel.setAttribute("for", "title");
+        titleLabel.textContent = "Enter a book title: ";
+        titleInput.setAttribute("type", "text");
+        titleInput.setAttribute("name", "title");
+
+        let authorGroup = document.createElement("div");
+        let authorLabel = document.createElement("label");
+        let authorInput = document.createElement("input");
+        authorLabel.setAttribute("for", "author");
+        authorLabel.textContent = "Enter a book author: ";
+        authorInput.setAttribute("type", "text");
+        authorInput.setAttribute("name", "author");
+
+        let pagesGroup = document.createElement("div");
+        let numOfPagesLabel = document.createElement("label");
+        let numOfPagesInput = document.createElement("input");
+        numOfPagesLabel.setAttribute("for", "num-of-pages");
+        numOfPagesLabel.textContent = "Enter the number of pages: ";
+        numOfPagesInput.setAttribute("type", "number");
+        numOfPagesInput.setAttribute("name", "num-of-pages");
+
+        let readStatusGroup = document.createElement("div");
+        let readStatusLabel = document.createElement("label");
+        let readStatusInput = document.createElement("input");
+        readStatusLabel.setAttribute("for", "read-status");
+        readStatusLabel.textContent = "Enter whether you have read the book: ";
+        readStatusInput.setAttribute("type", "text");
+        readStatusInput.setAttribute("name", "read-status");
+
+        let submitButtonGroup = document.createElement("div");
+        let submitButton = document.createElement("input");
+        submitButton.setAttribute("type", "submit");
+        submitButton.setAttribute("value", "Add Book to Library");
+        submitButton.addEventListener("click", (event) => {
+
+            addBookToLibrary(submitButton);
+
+            event.preventDefault();
+        });
+
+
+
+        titleGroup.appendChild(titleLabel);
+        titleGroup.appendChild(titleInput);
+        authorGroup.appendChild(authorLabel);
+        authorGroup.appendChild(authorInput);
+        pagesGroup.appendChild(numOfPagesLabel);
+        pagesGroup.appendChild(numOfPagesInput);
+        readStatusGroup.appendChild(readStatusLabel);
+        readStatusGroup.appendChild(readStatusInput);
+        submitButtonGroup.appendChild(submitButton);
+
+
+
+
+        bookForm.appendChild(titleGroup);
+        bookForm.appendChild(authorGroup);
+        bookForm.appendChild(pagesGroup);
+        bookForm.appendChild(readStatusGroup);
+        bookForm.appendChild(submitButtonGroup);
+
+        headerSection.appendChild(bookForm);
+
+
+        newBookButton.hidden = true;
+
+    });
+
+
+
+
+}
+
+
+createForm();
+
+
+
+
+
+
