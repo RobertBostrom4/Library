@@ -7,3 +7,9 @@ body {
     height: 100vh;
     background-color: #1e2124;
 }
+
+.header-section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
