@@ -1,6 +1,6 @@
 let myLibrary = [];
 let index = 0;
-
+let readingStatus = "";
 
 function Book(title, author, numberOfPages, read) {
 
@@ -76,17 +76,17 @@ function addBookToLibrary(submitButton) {
     let bookTitle = document.querySelector("[name=title]");
     let bookAuthor = document.querySelector("[name=author]");
     let numberOfPages = document.querySelector("[name=num-of-pages]");
-    let readStatus = document.querySelector("[name=read-status]");
+
 
     submitButton.addEventListener("click", (event) => {
 
-        let newBook = new Book(bookTitle.value, bookAuthor.value, numberOfPages.value, readStatus.value);
+        let newBook = new Book(bookTitle.value, bookAuthor.value, numberOfPages.value, readingStatus);
         let check = (book) => book.title == newBook.title;
 
         if (!myLibrary.some(check)) {
             myLibrary.push(newBook);
             displayBooks();
-        
+
             newBookButton.hidden = false;
             document.querySelector(".header-section").children[2].remove();
         }
@@ -136,11 +136,20 @@ function createForm() {
 
         let readStatusGroup = document.createElement("div");
         let readStatusLabel = document.createElement("label");
-        let readStatusInput = document.createElement("input");
-        readStatusLabel.setAttribute("for", "read-status");
-        readStatusLabel.textContent = "Enter whether you have read the book: ";
-        readStatusInput.setAttribute("type", "text");
-        readStatusInput.setAttribute("name", "read-status");
+        readStatusLabel.textContent = "Have you read the book? "
+        let yesButton = document.createElement("button");
+        yesButton.textContent = "Yes";
+        yesButton.addEventListener("click", (event) => {
+            readingStatus = yesButton.textContent;
+            event.preventDefault()
+        });
+
+        let noButton = document.createElement("button");
+        noButton.textContent = "No";
+        noButton.addEventListener("click", (event) => {
+            readingStatus = noButton.textContent;
+            event.preventDefault()
+        });
 
         let submitButtonGroup = document.createElement("div");
         let submitButton = document.createElement("input");
@@ -162,7 +171,9 @@ function createForm() {
         pagesGroup.appendChild(numOfPagesLabel);
         pagesGroup.appendChild(numOfPagesInput);
         readStatusGroup.appendChild(readStatusLabel);
-        readStatusGroup.appendChild(readStatusInput);
+        readStatusGroup.appendChild(yesButton);
+        readStatusGroup.appendChild(noButton);
+
         submitButtonGroup.appendChild(submitButton);
 
 
